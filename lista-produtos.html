@@ -4,13 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Products - Stacked Cards View</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 2rem;
-      background: #f9fafa;
-      color: #333;
-    }
+  
     h1 {
       margin-bottom: 1.5rem;
     }
@@ -60,10 +56,31 @@
       margin-left: 1.5rem;
       white-space: nowrap;
     }
+    .listaProdutos{
+        display: flex;
+        flex-direction: column;
+    }
   </style>
 </head>
 <body>
+<div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Menu</h2>
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="meus-pedidos.html">Meus Pedidos</a></li>
+          <li><a href="lista-produtos.html">Lista de produtos</a></li>
+          <li><a href="cadastro.html">Cadastro</a></li>
+          <li><a href="meu-cadastro.html">Meu Cadastro</a></li>
+          <li><a href="configuracoes.html">Configurações</a></li>
+        </ul>
+      </nav>
+    </aside>
 
+   
+  <div class="listaProdutos">
   <h1>Products - Stacked Cards View</h1>
 
   <div class="stack">
@@ -93,7 +110,7 @@
     </div>
     <!-- More stacked cards here -->
   </div>
-
+  </div>
+</div>
 </body>
 </html>
-
