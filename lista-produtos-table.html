@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products - Table View</title>
+  <style>
+    body { font-family: 'Inter', sans-serif; margin: 2rem; background: #f9fafa; color: #333; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+    }
+    th {
+      background: #3b82f6;
+      color: white;
+      font-weight: 600;
+    }
+    tr:hover {
+      background: #e0efff;
+    }
+    img {
+      max-width: 60px;
+      border-radius: 4px;
+    }
+    .add-btn {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .add-btn:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Products - Table View</h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Price (R$)</th>
+        <th>Add</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="https://via.placeholder.com/60" alt="Product 1" /></td>
+        <td>Party Balloon</td>
+        <td>Colorful latex balloon, 12 inch</td>
+        <td>2.50</td>
+        <td><button class="add-btn">Add</button></td>
+      </tr>
+      <tr>
+        <td><img src="https://via.placeholder.com/60" alt="Product 2" /></td>
+        <td>Confetti Pack</td>
+        <td>Assorted color confetti, 100g pack</td>
+        <td>5.00</td>
+        <td><button class="add-btn">Add</button></td>
+      </tr>
+      <tr>
+        <td><img src="https://via.placeholder.com/60" alt="Product 3" /></td>
+        <td>Party Hat</td>
+        <td>Blue and silver cone party hat</td>
+        <td>3.20</td>
+        <td><button class="add-btn">Add</button></td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </tbody>
+  </table>
+
+</body>
+</html>
