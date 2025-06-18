@@ -13,11 +13,12 @@
     .stack {
       display: flex;
       flex-direction: column;
+      width: 100%;
       gap: 1rem;
     }
     .stack-card {
       display: flex;
-      background: white;
+      background: rgb(238, 237, 237);
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       padding: 1rem 1.5rem;
@@ -57,8 +58,11 @@
       white-space: nowrap;
     }
     .listaProdutos{
-        display: flex;
-        flex-direction: column;
+       display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%; /* 🧠 This makes it take all horizontal space available */
+  padding: 2rem;
     }
   </style>
 </head>
