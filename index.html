@@ -6,6 +6,11 @@
   <title>Início - Web App V2</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+  img{
+    width: 100px;
+  }
+</style>
 <body>
   <div class="container">
     <!-- Sidebar -->
@@ -16,7 +21,7 @@
           <li><a href="index.html">Início</a></li>
           <li><a href="meus-pedidos.html">Meus Pedidos</a></li>
           <li><a href="lista-produtos.html">Lista de produtos</a></li>
-          <li><a href="cadastro.html">Cadastro</a></li>
+          <li><a href="cadastro.html">Cadastro de Clientes</a></li>
           <li><a href="meu-cadastro.html">Meu Cadastro</a></li>
           <li><a href="configuracoes.html">Configurações</a></li>
         </ul>
@@ -25,14 +30,29 @@
 
     <!-- Workspace -->
     <main class="workspace">
-      <section id="inicio" class="page">
-        <h1>Dashboard</h1>
+      <section  class="page">
+        <h1>Painel Geral</h1>
         <div class="dashboard-cards">
           <div class="card">Total Faturado: R$0,00</div>
           <div class="card">Pedidos em Aberto: 0</div>
           <div class="card">Orçamentos: 0</div>
           <div class="card">Pedidos Fechados: 0</div>
           <div class="card">Lembretes: Aguardando liberação do financeiro</div>
+        </div>
+      </section>
+       <section  class="page">
+        <h1>Downloads</h1>
+        <div class="dashboard-cards">
+          <button class="downloads">Catálogo Festas</button>
+          <button class="downloads">Catálogo Junino</button>
+          <button class="downloads">Catálogo Halloween</button>
+        </div>
+      </section>
+       <section  class="page">
+        <h1>Pasta</h1>
+        <div class="dashboard-cards">
+          <img src="folder.png" alt="Folder Image" class="folder-image">
+          <h3>Pedidos e Boletos</h3>
         </div>
       </section>
     </main>

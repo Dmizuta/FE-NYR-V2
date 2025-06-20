@@ -14,11 +14,21 @@
       display: flex;
       flex-direction: column;
       width: 100%;
+      padding: 1rem;
       gap: 1rem;
     }
+
+      .stack :hover {
+     
+      background-color: rgb(190, 190, 190);
+    }
+
     .stack-card {
-      display: flex;
-      background: rgb(238, 237, 237);
+      display: grid;
+      grid-template-columns: 1fr 4fr 2fr 2fr;
+      grid-template-rows: auto;
+     
+      background: rgb(212, 212, 212);
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       padding: 1rem 1.5rem;
@@ -26,10 +36,10 @@
       cursor: pointer;
       transition: box-shadow 0.3s ease;
       width: 100%;
+      gap: 1rem;
     }
-    .stack-card:hover {
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-    }
+ 
+    
     .stack-card img {
       width: 120px;
       height: 90px;
@@ -38,14 +48,12 @@
       margin-right: 1.5rem;
       flex-shrink: 0;
     }
-    .stack-card-content {
-      flex-grow: 1;
-    }
-    .stack-card-content h2 {
+   
+    .stack-card h2 {
       margin: 0 0 0.5rem 0;
       font-size: 1.2rem;
     }
-    .stack-card-content p {
+    .stack-card p {
       margin: 0;
       color: #555;
       font-size: 1rem;
@@ -53,8 +61,8 @@
     .stack-card-price {
       font-weight: 700;
       font-size: 1.2rem;
-      color: #3b82f6;
-      margin-left: 1.5rem;
+    
+      
       white-space: nowrap;
     }
     .listaProdutos{
@@ -63,6 +71,16 @@
   flex-grow: 1;
   width: 100%; /* 🧠 This makes it take all horizontal space available */
   padding: 2rem;
+    }
+    .topPage{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    #seasons {
+      display: flex;
+      gap: 1rem;
     }
   </style>
 </head>
@@ -76,7 +94,7 @@
           <li><a href="index.html">Início</a></li>
           <li><a href="meus-pedidos.html">Meus Pedidos</a></li>
           <li><a href="lista-produtos.html">Lista de produtos</a></li>
-          <li><a href="cadastro.html">Cadastro</a></li>
+          <li><a href="cadastro.html">Cadastro de Clientes</a></li>
           <li><a href="meu-cadastro.html">Meu Cadastro</a></li>
           <li><a href="configuracoes.html">Configurações</a></li>
         </ul>
@@ -84,38 +102,83 @@
     </aside>
 
    
-  <div class="listaProdutos">
-    
-  <h1>Products - Stacked Cards View</h1>
+  <main class="listaProdutos">
 
-  <div class="stack">
-    <div class="stack-card">
-      <img src="https://via.placeholder.com/150" alt="Product 1" />
-      <div class="stack-card-content">
+  <div  class="topPage">
+
+  <div id="title">
+  <h1>Lista de Produtos</h1>
+  </div>
+
+  <div id="seasons">
+    <button>festa</button>
+    <button>junino</button>
+    <button>halloween</button>
+  </div>
+
+</div> 
+
+
+
+
+  <div class="stack" >
+
+    <div class="stack-card" >
+
+      <div class="image" >
+      <img src="image.png" alt="Product 1" />
+      </div>
+
+      <div class="stack-card-content" >
         <h2>Party Balloon</h2>
         <p>Colorful latex balloon, 12 inch</p>
+      </div>  
+
+      <div class="cxfechada" >
+      <h2>Caixa Fechada</h2>
+      <div class="qtde">Qtde: 120</div>
+      <div class="stack-card-price">R$ 1.50</div>
       </div>
+
+      <div class="cxfracionada" >
+      <h2>Caixa Fracionada</h2>
+      <div class="qtde">Qtde: 120</div>
       <div class="stack-card-price">R$ 2.50</div>
-    </div>
-    <div class="stack-card">
-      <img src="https://via.placeholder.com/150" alt="Product 2" />
-      <div class="stack-card-content">
-        <h2>Confetti Pack</h2>
-        <p>Assorted color confetti, 100g pack</p>
       </div>
-      <div class="stack-card-price">R$ 5.00</div>
+
     </div>
-    <div class="stack-card">
-      <img src="https://via.placeholder.com/150" alt="Product 3" />
-      <div class="stack-card-content">
-        <h2>Party Hat</h2>
-        <p>Blue and silver cone party hat</p>
+     <div class="stack-card">
+
+      <div class="image" >
+      <img src="image.png" alt="Product 1" />
       </div>
-      <div class="stack-card-price">R$ 3.20</div>
+
+      <div class="stack-card-content" >
+        <h2>Party Balloon</h2>
+        <p>Colorful latex balloon, 12 inch</p>
+      </div>  
+
+      <div class="cxfechada" >
+      <h2>Caixa Fechada</h2>
+      <div class="qtde">Qtde: 120</div>
+      <div class="stack-card-price">R$ 1.50</div>
+      </div>
+
+      <div class="cxfracionada" >
+      <h2>Caixa Fracionada</h2>
+      <div class="qtde">Qtde: 120</div>
+      <div class="stack-card-price">R$ 2.50</div>
+      </div>
+
     </div>
+
+
+
+
+    
     <!-- More stacked cards here -->
-  </div>
-  </div>
+ </div>
+</main>
 </div>
 </body>
 </html>
