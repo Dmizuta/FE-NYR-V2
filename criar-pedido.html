@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Pedido - Web App V2</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .form-row input, .form-row select {
+      flex: 1;
+    }
+    .form-row .readonly {
+      background-color: #e6e6e6;
+      border: 1px solid #ccc;
+      padding: 8px;
+      border-radius: 4px;
+    }
+    .icon-button {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Menu</h2>
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="meus-pedidos.html">Meus Pedidos</a></li>
+          <li><a href="lista-produtos.html">Lista de produtos</a></li>
+          <li><a href="cadastro.html">Cadastro de Clientes</a></li>
+          <li><a href="meu-cadastro.html">Meu Cadastro</a></li>
+          <li><a href="configuracoes.html">Configurações</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Workspace -->
+    <main class="workspace">
+      <section class="page">
+        <h1>Criar Pedido</h1>
+
+        <!-- Cliente -->
+        <div class="form-row">
+          <label for="customerId">ID Cliente:</label>
+          <input type="text" id="customerId" placeholder="Digite ou busque" />
+          <button class="icon-button" title="Buscar cliente">
+            🔍
+          </button>
+          <div class="readonly" id="razaoSocial">Razão Social</div>
+          <div class="readonly" id="cnpj">CNPJ</div>
+        </div>
+
+        <!-- Tabela de Preço -->
+        <div class="form-row">
+          <label for="tabelaPreco">Tabela de Preço:</label>
+          <select id="tabelaPreco">
+            <option value="fracionada">Fracionada</option>
+            <option value="fechada">Fechada</option>
+            <option value="livre">Livre</option>
+          </select>
+        </div>
+
+        <!-- Transportadora -->
+        <div class="form-row">
+          <label for="transportadora">Transportadora:</label>
+          <input type="text" id="transportadora" placeholder="Escolha ou crie uma transportadora" />
+          <button class="icon-button" title="Buscar transportadora">
+            🔍
+          </button>
+        </div>
+
+        <!-- Condições de Pagamento -->
+        <div class="form-row">
+          <label for="pagamentoTipo">Tipo de Pagamento:</label>
+          <select id="pagamentoTipo">
+            <option value="pix">Depósito / Pix</option>
+            <option value="cheque">Cheque</option>
+            <option value="boleto">Boleto Bancário</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="pagamentoCondicao">Condição:</label>
+          <select id="pagamentoCondicao">
+            <option value="">Selecione uma condição</option>
+            <!-- opções virão dinamicamente depois -->
+          </select>
+        </div>
+
+        <!-- Observações -->
+        <div class="form-row">
+          <label for="observacoes">Observações:</label>
+        </div>
+        <textarea id="observacoes" placeholder="Digite algo relevante sobre esse pedido..."></textarea>
+
+        <!-- Botão de continuar -->
+        <div style="margin-top: 2rem;">
+          <button onclick="window.location.href='lista-produtos.html'">Avançar para Produtos</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

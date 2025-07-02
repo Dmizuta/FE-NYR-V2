@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produto</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .produto-container {
+      padding: 2rem;
+      background: #f4f4f4;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .produto-header {
+      display: flex;
+      gap: 2rem;
+    }
+    .produto-header img {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .produto-info h2 {
+      margin-bottom: 0.5rem;
+    }
+    .preco-opcoes {
+      margin-top: 1rem;
+    }
+    .preco-opcoes label {
+      margin-right: 1rem;
+    }
+    .actions {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <main class="workspace">
+      <div class="produto-container">
+        <h1>Detalhes do Produto</h1>
+        <div class="produto-header">
+          <img id="productImage" src="" alt="Produto">
+          <div class="produto-info">
+            <h2 id="productName">Nome do Produto</h2>
+            <p id="productDescription">Descrição detalhada do produto vai aqui.</p>
+            <div class="preco-opcoes">
+              <label>
+                <input type="radio" name="tipoPreco" value="fechada" checked>
+                Caixa Fechada: <span id="precoFechada">R$ 0,00</span>
+              </label>
+              <label>
+                <input type="radio" name="tipoPreco" value="fracionada">
+                Caixa Fracionada: <span id="precoFracionada">R$ 0,00</span>
+              </label>
+            </div>
+            <div class="actions">
+              <input type="number" id="quantidade" placeholder="Quantidade" min="1">
+              <button id="btnAdicionar">Adicionar ao Pedido</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Simula um banco de dados mockado
+    const mockProdutos = {
+      "101": {
+        nome: "Bexiga Colorida 12\"",
+        descricao: "Pacote com balões coloridos de 12 polegadas",
+        imagem: "https://i.imgur.com/VOjr1F9.png",
+        precoFechada: 1.50,
+        precoFracionada: 2.20
+      },
+      "102": {
+        nome: "Chapéu de Festa",
+        descricao: "Chapéu cônico com elástico, pacote com 10 unidades",
+        imagem: "https://i.imgur.com/UUkdW2e.png",
+        precoFechada: 5.90,
+        precoFracionada: 7.50
+      }
+    };
+
+    // Pega o ID da URL
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id');
+
+    // Busca produto
+    const produto = mockProdutos[productId];
+
+    if (produto) {
+      document.getElementById('productName').textContent = produto.nome;
+      document.getElementById('productDescription').textContent = produto.descricao;
+      document.getElementById('productImage').src = produto.imagem;
+      document.getElementById('precoFechada').textContent = `R$ ${produto.precoFechada.toFixed(2)}`;
+      document.getElementById('precoFracionada').textContent = `R$ ${produto.precoFracionada.toFixed(2)}`;
+    } else {
+      document.querySelector('.produto-container').innerHTML = "<h2>Produto não encontrado 😕</h2>";
+    }
+
+    // (opcional) Captura o clique no botão
+    document.getElementById('btnAdicionar').addEventListener('click', () => {
+      const qtd = parseInt(document.getElementById('quantidade').value);
+      const tipo = document.querySelector('input[name="tipoPreco"]:checked').value;
+
+      if (!qtd || qtd <= 0) {
+        alert("Digite uma quantidade válida.");
+        return;
+      }
+
+      alert(`Adicionado ${qtd}x "${produto.nome}" com preço "${tipo}" ao pedido (mock).`);
+    });
+  </script>
+</body>
+</html>
