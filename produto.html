@@ -6,46 +6,187 @@
   <title>Produto</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .produto-container {
-      padding: 2rem;
-      background: #f4f4f4;
-      border-radius: 10px;
-      max-width: 800px;
-      margin: auto;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
     }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 240px;
+      background-color: #333;
+      color: white;
+      padding: 1.5rem 1rem;
+    }
+
+    .sidebar h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin: 0.7rem 0;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .workspace {
+      flex: 1;
+      padding: 3rem;
+    }
+
+    .produto-container {
+      background: white;
+      border-radius: 16px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 3rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    }
+
     .produto-header {
       display: flex;
-      gap: 2rem;
+      gap: 3rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
     }
+
     .produto-header img {
-      width: 200px;
+      width: 300px;
       height: auto;
-      border-radius: 10px;
+      border-radius: 12px;
       object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+
     .produto-info h2 {
-      margin-bottom: 0.5rem;
+      font-size: 2rem;
+      margin: 0 0 1rem;
     }
-    .preco-opcoes {
-      margin-top: 1rem;
+
+    .produto-info p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+      color: #555;
     }
+
     .preco-opcoes label {
-      margin-right: 1rem;
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
     }
+
     .actions {
       margin-top: 2rem;
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap;
       align-items: center;
+    }
+
+    .actions input[type="number"] {
+      width: 120px;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1rem;
+      width: 180px;
+      height: 44px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .btn.primary {
+      background-color: #2a9d8f;
+      color: white;
+    }
+
+    .btn.primary:hover {
+      background-color: #21867a;
+    }
+
+    .btn.cancel {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .btn.cancel:hover {
+      background-color: #b5b5b5;
+    }
+
+    .ultimo-produto {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: #eef6f6;
+      border-left: 6px solid #2a9d8f;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .ultimo-produto a {
+      text-decoration: none;
+      color: #2a9d8f;
+      font-weight: bold;
+    }
+
+    .ultimo-produto a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
+    <aside class="sidebar">
+      <h2>Menu</h2>
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="criar-pedidos.html">Criar Pedidos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="produtos.html">Produto</a></li>
+          <li><a href="lista-produtos.html">Lista de produtos</a></li>
+          <li><a href="cadastro-cliente.html">Cadastro Cliente</a></li>
+          <li><a href="cadastro-transportadora.html">Cadastro Transportadora</a></li>
+          <li><a href="cadastro-user.html">Meu Cadastro</a></li>
+          <li><a href="configuracoes.html">Configurações</a></li>
+        </ul>
+      </nav>
+    </aside>
+
     <main class="workspace">
       <div class="produto-container">
-        <h1>Detalhes do Produto</h1>
         <div class="produto-header">
           <img id="productImage" src="" alt="Produto">
           <div class="produto-info">
@@ -53,72 +194,114 @@
             <p id="productDescription">Descrição detalhada do produto vai aqui.</p>
             <div class="preco-opcoes">
               <label>
-                <input type="radio" name="tipoPreco" value="fechada" checked>
-                Caixa Fechada: <span id="precoFechada">R$ 0,00</span>
+                Preço Caixa Fechada: <span id="precoFechada">-</span><br>
+                Quantidade Caixa Fechada: <span id="qtdeFechada">-</span>
               </label>
               <label>
-                <input type="radio" name="tipoPreco" value="fracionada">
-                Caixa Fracionada: <span id="precoFracionada">R$ 0,00</span>
+                Preço Caixa Fracionada: <span id="precoFracionada">-</span><br>
+                Quantidade Caixa Fracionada: <span id="qtdeFracionada">-</span>
               </label>
             </div>
             <div class="actions">
               <input type="number" id="quantidade" placeholder="Quantidade" min="1">
-              <button id="btnAdicionar">Adicionar ao Pedido</button>
+              <button class="btn primary" id="btnAdicionar">Adicionar</button>
+              <button class="btn cancel" id="btnCancelar">Cancelar</button>
             </div>
           </div>
         </div>
+
+        <!-- Último produto adicionado -->
+
+        <div class="ultimo-produto">
+  <strong>Último produto adicionado:</strong><br>
+  <strong>MOD-111</strong> — 10x (fechada)<br>
+  <a href="produto.html?id=102">Ver novamente</a>
+</div>
+
+        <div class="ultimo-produto" id="ultimoProdutoContainer" style="display:none;"></div>
       </div>
     </main>
   </div>
 
   <script>
-    // Simula um banco de dados mockado
     const mockProdutos = {
       "101": {
-        nome: "Bexiga Colorida 12\"",
-        descricao: "Pacote com balões coloridos de 12 polegadas",
-        imagem: "https://i.imgur.com/VOjr1F9.png",
+        nome: "MOD-111",
+        descricao: "Sapato de palhaço - colorido",
+        imagem: "image.png",
         precoFechada: 1.50,
-        precoFracionada: 2.20
+        qtdeFechada: 120,
+        precoFracionada: 2.20,
+        qtdeFracionada: 12
       },
       "102": {
         nome: "Chapéu de Festa",
         descricao: "Chapéu cônico com elástico, pacote com 10 unidades",
         imagem: "https://i.imgur.com/UUkdW2e.png",
         precoFechada: 5.90,
-        precoFracionada: 7.50
+        precoFracionada: 7.50,
+        qtdeFracionada: 10
       }
     };
 
-    // Pega o ID da URL
     const params = new URLSearchParams(window.location.search);
     const productId = params.get('id');
-
-    // Busca produto
     const produto = mockProdutos[productId];
 
     if (produto) {
       document.getElementById('productName').textContent = produto.nome;
       document.getElementById('productDescription').textContent = produto.descricao;
       document.getElementById('productImage').src = produto.imagem;
-      document.getElementById('precoFechada').textContent = `R$ ${produto.precoFechada.toFixed(2)}`;
-      document.getElementById('precoFracionada').textContent = `R$ ${produto.precoFracionada.toFixed(2)}`;
+      document.getElementById('precoFechada').textContent = produto.precoFechada ? `R$ ${produto.precoFechada.toFixed(2)}` : '-';
+      document.getElementById('qtdeFechada').textContent = produto.qtdeFechada ?? '-';
+      document.getElementById('precoFracionada').textContent = produto.precoFracionada ? `R$ ${produto.precoFracionada.toFixed(2)}` : '-';
+      document.getElementById('qtdeFracionada').textContent = produto.qtdeFracionada ?? '-';
     } else {
       document.querySelector('.produto-container').innerHTML = "<h2>Produto não encontrado 😕</h2>";
     }
 
-    // (opcional) Captura o clique no botão
     document.getElementById('btnAdicionar').addEventListener('click', () => {
       const qtd = parseInt(document.getElementById('quantidade').value);
-      const tipo = document.querySelector('input[name="tipoPreco"]:checked').value;
+      const tipo = document.querySelector('input[name="tipoPreco"]:checked')?.value || 'desconhecido';
 
       if (!qtd || qtd <= 0) {
         alert("Digite uma quantidade válida.");
         return;
       }
 
-      alert(`Adicionado ${qtd}x "${produto.nome}" com preço "${tipo}" ao pedido (mock).`);
+      // Salvar no localStorage
+      const ultimoProduto = {
+        id: productId,
+        nome: produto.nome,
+        qtd: qtd,
+        tipo: tipo
+      };
+      localStorage.setItem('ultimoProdutoAdicionado', JSON.stringify(ultimoProduto));
+
+      alert(`Adicionado ${qtd}x "${produto.nome}" (${tipo}) ao pedido.`);
+      exibirUltimoProduto();
     });
+
+    document.getElementById('btnCancelar').addEventListener('click', () => {
+      history.back();
+    });
+
+    function exibirUltimoProduto() {
+      const info = localStorage.getItem('ultimoProdutoAdicionado');
+      if (!info) return;
+
+      const { id, nome, qtd, tipo } = JSON.parse(info);
+      const container = document.getElementById('ultimoProdutoContainer');
+      container.style.display = 'block';
+      container.innerHTML = `
+        <strong>Último produto adicionado:</strong><br>
+        🧺 <strong>${nome}</strong> — ${qtd}x (${tipo})<br>
+        <a href="produto.html?id=${id}">Ver novamente</a>
+      `;
+    }
+
+    // Mostrar se já existe
+    exibirUltimoProduto();
   </script>
 </body>
 </html>
