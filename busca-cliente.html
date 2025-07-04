@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selecionar Clientes</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f4f4f4;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ccc;
+    }
+    th {
+      background: #2e2e2e;
+      color: white;
+      text-align: left;
+    }
+    tr:hover {
+      background: #f0f0f0;
+    }
+    .btn-select, .btn-remove, .btn-confirm {
+      padding: 0.4rem 0.8rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-select {
+      background-color: #007bff;
+      color: white;
+    }
+    .btn-remove {
+      background-color: #dc3545;
+      color: white;
+    }
+    .btn-confirm {
+      background: #2e2e2e;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+    #selecionados {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .cliente-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Selecionar Clientes</h1>
+  <input type="text" id="searchInput" placeholder="Buscar por razão social ou CNPJ...">
+
+  <table id="clientesTable">
+    <thead>
+      <tr>
+        <th>Razão Social</th>
+        <th>CNPJ</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Loja Matriz</td>
+        <td>12.345.678/0001-00</td>
+        <td><button class="btn-select" onclick="addCliente(this)">Selecionar</button></td>
+      </tr>
+      <tr>
+        <td>Filial Mooca</td>
+        <td>12.345.678/0002-00</td>
+        <td><button class="btn-select" onclick="addCliente(this)">Selecionar</button></td>
+      </tr>
+      <tr>
+        <td>Filial Tatuapé</td>
+        <td>12.345.678/0003-00</td>
+        <td><button class="btn-select" onclick="addCliente(this)">Selecionar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="selecionados">
+    <h2>Clientes Selecionados</h2>
+    <div id="listaSelecionados">
+      <div class="cliente-item">
+        <span>Loja Matriz (12.345.678/0001-00)</span>
+        <button class="btn-remove" onclick="removerCliente('12.345.678/0001-00')">Remover</button>
+      </div>
+      <div class="cliente-item">
+        <span>Filial Mooca (12.345.678/0002-00)</span>
+        <button class="btn-remove" onclick="removerCliente('12.345.678/0002-00')">Remover</button>
+      </div>
+    </div>
+    <button class="btn-confirm" onclick="confirmarSelecao()">✔️ Confirmar Seleção</button>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const table = document.getElementById("clientesTable");
+    const listaSelecionados = document.getElementById("listaSelecionados");
+    const selecionados = [
+      { razao: "Loja Matriz", cnpj: "12.345.678/0001-00" },
+      { razao: "Filial Mooca", cnpj: "12.345.678/0002-00" }
+    ];
+
+    searchInput.addEventListener("input", () => {
+      const filter = searchInput.value.toLowerCase();
+      const rows = table.querySelectorAll("tbody tr");
+
+      rows.forEach(row => {
+        const razao = row.children[0].textContent.toLowerCase();
+        const cnpj = row.children[1].textContent.toLowerCase();
+        row.style.display = razao.includes(filter) || cnpj.includes(filter) ? "" : "none";
+      });
+    });
+
+    function addCliente(btn) {
+      const row = btn.parentElement.parentElement;
+      const razao = row.children[0].textContent;
+      const cnpj = row.children[1].textContent;
+
+      if (!selecionados.some(c => c.cnpj === cnpj)) {
+        selecionados.push({ razao, cnpj });
+        renderSelecionados();
+      }
+    }
+
+    function removerCliente(cnpj) {
+      const index = selecionados.findIndex(c => c.cnpj === cnpj);
+      if (index > -1) {
+        selecionados.splice(index, 1);
+        renderSelecionados();
+      }
+    }
+
+    function renderSelecionados() {
+      listaSelecionados.innerHTML = "";
+      selecionados.forEach(cliente => {
+        const div = document.createElement("div");
+        div.className = "cliente-item";
+        div.innerHTML = `
+          <span>${cliente.razao} (${cliente.cnpj})</span>
+          <button class="btn-remove" onclick="removerCliente('${cliente.cnpj}')">Remover</button>
+        `;
+        listaSelecionados.appendChild(div);
+      });
+    }
+
+    function confirmarSelecao() {
+      localStorage.setItem("clientesSelecionados", JSON.stringify(selecionados));
+      alert("Clientes salvos com sucesso! Voltando para a tela de pedido...");
+      window.location.href = "criar-pedido.html";
+    }
+  </script>
+</body>
+</html>
