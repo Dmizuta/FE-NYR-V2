@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selecionar Transportadora</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f4f4f4;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ccc;
+    }
+    th {
+      background: #2e2e2e;
+      color: white;
+      text-align: left;
+    }
+    tr:hover {
+      background: #f0f0f0;
+    }
+    .btn-select, .btn-confirm {
+      padding: 0.4rem 0.8rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-select {
+      background-color: #007bff;
+      color: white;
+    }
+    .btn-confirm {
+      background: #2e2e2e;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+    #transportadoraSelecionada {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Selecionar Transportadora</h1>
+
+  <input type="text" id="searchInput" placeholder="Buscar por nome da transportadora...">
+
+  <table id="transportadorasTable">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Transportadora Rápida</td>
+        <td><button class="btn-select" onclick="selecionarTransportadora(this)">Selecionar</button></td>
+      </tr>
+      <tr>
+        <td>LogBrasil</td>
+        <td><button class="btn-select" onclick="selecionarTransportadora(this)">Selecionar</button></td>
+      </tr>
+      <tr>
+        <td>TransSul Express</td>
+        <td><button class="btn-select" onclick="selecionarTransportadora(this)">Selecionar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="transportadoraSelecionada">
+    <h2>Transportadora Selecionada</h2>
+    <p id="nomeSelecionado">Nenhuma transportadora selecionada.</p>
+    <button class="btn-confirm" onclick="confirmarSelecao()">✔️ Confirmar Seleção</button>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const table = document.getElementById("transportadorasTable");
+    const nomeSelecionado = document.getElementById("nomeSelecionado");
+    let transportadoraSelecionada = null;
+
+    searchInput.addEventListener("input", () => {
+      const filter = searchInput.value.toLowerCase();
+      const rows = table.querySelectorAll("tbody tr");
+
+      rows.forEach(row => {
+        const nome = row.children[0].textContent.toLowerCase();
+        row.style.display = nome.includes(filter) ? "" : "none";
+      });
+    });
+
+    function selecionarTransportadora(btn) {
+      const row = btn.parentElement.parentElement;
+      const nome = row.children[0].textContent;
+
+      transportadoraSelecionada = nome;
+      nomeSelecionado.textContent = nome;
+    }
+
+    function confirmarSelecao() {
+      if (!transportadoraSelecionada) {
+        alert("Selecione uma transportadora primeiro!");
+        return;
+      }
+      localStorage.setItem("transportadoraSelecionada", transportadoraSelecionada);
+      alert("Transportadora salva com sucesso! Voltando para a tela de pedido...");
+      window.location.href = "criar-pedido.html";
+    }
+  </script>
+</body>
+</html>
