@@ -1,0 +1,86 @@
+
+  
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+    .stack {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+      .stack :hover {
+     
+      background-color: rgb(190, 190, 190);
+    }
+
+    .stack-card {
+      display: grid;
+      grid-template-columns: 1fr 4fr 2fr 2fr;
+      grid-template-rows: auto;
+     
+      background: rgb(212, 212, 212);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      padding: 1rem 1.5rem;
+      align-items: center;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+      width: 100%;
+      gap: 1rem;
+    }
+ 
+    
+    .stack-card img {
+      width: 120px;
+      height: 90px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-right: 1.5rem;
+      flex-shrink: 0;
+    }
+   
+    .stack-card h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+    }
+    .stack-card p {
+      margin: 0;
+      color: #555;
+      font-size: 1rem;
+    }
+    .stack-card-price {
+      font-weight: 700;
+      font-size: 1.2rem;
+    
+      
+      white-space: nowrap;
+    }
+    .listaProdutos{
+       display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%; /* 🧠 This makes it take all horizontal space available */
+  padding: 2rem;
+    }
+    .topPage{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    #seasons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .sidebar {
+  width: 220px;
+  background: #2e2e2e;
+  color: white;
+  padding: 1rem;
+  flex-shrink: 0; /* prevent sidebar from shrinking */
+}
+

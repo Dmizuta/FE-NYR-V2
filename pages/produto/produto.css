@@ -1,0 +1,158 @@
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 240px;
+      background-color: #333;
+      color: white;
+      padding: 1.5rem 1rem;
+    }
+
+    .sidebar h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin: 0.7rem 0;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .workspace {
+      flex: 1;
+      padding: 3rem;
+    }
+
+    .produto-container {
+      background: white;
+      border-radius: 16px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 3rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .produto-header {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .produto-header img {
+      width: 300px;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .produto-info h2 {
+      font-size: 2rem;
+      margin: 0 0 1rem;
+    }
+
+    .produto-info p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    .preco-opcoes label {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .actions {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .actions input[type="number"] {
+      width: 120px;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1rem;
+      width: 180px;
+      height: 44px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .btn.primary {
+      background-color: #2a9d8f;
+      color: white;
+    }
+
+    .btn.primary:hover {
+      background-color: #21867a;
+    }
+
+    .btn.cancel {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .btn.cancel:hover {
+      background-color: #b5b5b5;
+    }
+
+    .ultimo-produto {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: #eef6f6;
+      border-left: 6px solid #2a9d8f;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .ultimo-produto a {
+      text-decoration: none;
+      color: #2a9d8f;
+      font-weight: bold;
+    }
+
+    .ultimo-produto a:hover {
+      text-decoration: underline;
+    }
