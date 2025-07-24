@@ -1,107 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Products - Stacked Cards View</title>
+  <title>Lista de Produtos</title>
   <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="listaProdutos.css" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <div class="container">
-    <!-- Sidebar -->
+  <!-- Sidebar -->
   <aside class="sidebar">
-     
+    <div id="sidebar-placeholder"></div>
+  </aside>
 
-
-
-
-<div id="sidebar-placeholder"></div>
-
-
-
-
-    </aside>
-
-   
   <main class="listaProdutos">
-
-  <div  class="topPage">
-
-  <div id="title">
-  <h1>Lista de Produtos</h1>
-  </div>
-
-  <div id="seasons">
-    <button>festa</button>
-    <button>junino</button>
-    <button>halloween</button>
-  </div>
-
-</div> 
-
-
-
-
-  <div class="stack" >
-
-    <div class="stack-card" onclick="window.location.href='/pages/produtos/produto.html?id=102'" >
-
-      <div class="image" >
-      <img src="image.png" alt="Product 1" />
+    <div class="topPage">
+      <div id="title">
+        <h1>Lista de Produtos</h1>
       </div>
-
-      <div class="stack-card-content" >
-        <h2>Party Balloon</h2>
-        <p>Colorful latex balloon, 12 inch</p>
-      </div>  
-
-      <div class="cxfechada" >
-      <h2>Caixa Fechada</h2>
-      <div class="qtde">Qtde: 120</div>
-      <div class="stack-card-price">R$ 1.50</div>
+      <div id="seasons">
+        <button>festa</button>
+        <button>junino</button>
+        <button>halloween</button>
       </div>
-
-      <div class="cxfracionada" >
-      <h2>Caixa Fracionada</h2>
-      <div class="qtde">Qtde: 120</div>
-      <div class="stack-card-price">R$ 2.50</div>
-      </div>
-
-    </div>
-     <div class="stack-card" onclick="window.location.href='/pages/produtos/produto.html?id=101'">
-
-      <div class="image" >
-      <img src="image.png" alt="Product 2" />
-      </div>
-
-      <div class="stack-card-content" >
-        <h2>Party Balloon</h2>
-        <p>Colorful latex balloon, 12 inch</p>
-      </div>  
-
-      <div class="cxfechada" >
-      <h2>Caixa Fechada</h2>
-      <div class="qtde">Qtde: 120</div>
-      <div class="stack-card-price">R$ 1.50</div>
-      </div>
-
-      <div class="cxfracionada" >
-      <h2>Caixa Fracionada</h2>
-      <div class="qtde">Qtde: 120</div>
-      <div class="stack-card-price">R$ 2.50</div>
-      </div>
-
     </div>
 
-
-
-
-    
-    <!-- More stacked cards here -->
- </div>
-</main>
+    <div class="stack" id="productList">
+      <!-- Cards serão inseridos via JS -->
+    </div>
+  </main>
 </div>
- <script src="/script.js"></script>
+<script src="/config.js"></script>
+<script src="/script.js"></script>
+<script src="lista-produtos.js"></script>
+
+
 </body>
 </html>

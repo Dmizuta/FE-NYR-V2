@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teste Produtos</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+  <h1>Teste Produtos</h1>
+  <button onclick="carregarProdutos()">Carregar Produtos</button>
+
+  <script>
+    function carregarProdutos() {
+      // 👉 Para ambiente local (Live Server + backend local rodando)
+      axios.get('http://localhost:3000/api/products')
+
+      // 👉 Ou use isso se quiser testar a versão publicada na Vercel
+      // axios.get('https://be-nyr-v2.vercel.app/api/products')
+
+        .then(res => {
+          console.log(res.data);              // ✅ Ver no console
+          alert(JSON.stringify(res.data, null, 2)); // ✅ Ver em popup
+        })
+        .catch(err => {
+          console.error('Erro:', err);
+          alert('Erro ao buscar produtos!');
+        });
+    }
+  </script>
+</body>
+</html>
