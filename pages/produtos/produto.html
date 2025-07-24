@@ -6,22 +6,12 @@
   <title>Produto</title>
   <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="produto.css" />
-  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-
   <div class="container">        
-      <aside class="sidebar">
-     
-
-
-
-
-<div id="sidebar-placeholder"></div>
-
-
-
-
+    <aside class="sidebar">
+      <div id="sidebar-placeholder"></div>
     </aside>
 
     <main class="workspace">
@@ -50,21 +40,13 @@
         </div>
 
         <!-- Último produto adicionado -->
-
-        <div class="ultimo-produto">
-  <strong>Último produto adicionado:</strong><br>
-  <strong>MOD-111</strong> — 10x (fechada)<br>
-  <a href="produto.html?id=102">Ver novamente</a>
-</div>
-
         <div class="ultimo-produto" id="ultimoProdutoContainer" style="display:none;"></div>
       </div>
     </main>
   </div>
 
-<script src="/script.js"></script>
-
- <script src="produto.js"></script>
-
+  <script src="/config.js"></script>
+  <script src="/script.js"></script>
+  <script src="produto.js"></script>
 </body>
 </html>
