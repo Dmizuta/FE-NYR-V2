@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finalizar Pedido</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div id="sidebar-placeholder"></div>
+    </aside>
+
+    <main class="workspace">
+      <h1>Resumo do Pedido</h1>
+
+      <!-- Cliente -->
+      <section id="clienteInfo">
+        <h2>Cliente</h2>
+        <p><strong>Nome:</strong> <span id="clienteNome">-</span></p>
+        <p><strong>CNPJ:</strong> <span id="clienteCNPJ">-</span></p>
+      </section>
+
+      <!-- Transportadora -->
+      <section id="transpInfo">
+        <h2>Transportadora</h2>
+        <p><strong>Nome:</strong> <span id="transpNome">-</span></p>
+      </section>
+
+      <!-- Produtos -->
+      <section id="produtosResumo">
+        <h2>Produtos Selecionados</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Qtd</th>
+              <th>Preço</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody">
+            <!-- Preenchido via JS -->
+          </tbody>
+        </table>
+        <p><strong>Total:</strong> <span id="totalPedido">R$ 0,00</span></p>
+      </section>
+
+      <!-- Observações -->
+      <section id="observacoes">
+        <h2>Observações</h2>
+        <p id="obsTexto">-</p>
+      </section>
+
+      <!-- Botões -->
+      <div class="actions">
+        <button class="btn cancel" onclick="voltar()">Voltar</button>
+        <button class="btn primary" onclick="finalizarPedido()">Finalizar Pedido</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="/script.js"></script>
+  <script src="checkout.js"></script>
+</body>
+</html>
